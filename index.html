@@ -3,24 +3,105 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello World with Typescript</title>
+    <meta name="theme-color" content="#172523" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Seat by Seat | Cinema Reservations</title>
   </head>
-  <body class="min-h-screen bg-slate-100 text-slate-900">
-    <main class="mx-auto flex min-h-screen max-w-2xl flex-col items-center justify-center gap-6 p-6">
-      <h1 class="text-4xl font-bold tracking-tight">Hello World with Typescript</h1>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="wordmark" href="#top" aria-label="Seat by Seat home">
+          <span class="wordmark-icon" aria-hidden="true">S</span>
+          <span>SEAT<span class="wordmark-light">BY SEAT</span></span>
+        </a>
+        <div class="venue-label"><span class="live-dot"></span> BOX OFFICE <span class="venue-divider">/</span> HALL 02</div>
+      </header>
 
-      <section class="w-full max-w-md overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-        <img
-          src="/rigo-baby.jpg"
-          alt="Hello Rigo"
-          class="h-64 w-full bg-slate-50 object-contain p-2"
-        />
-        <div class="p-5">
-          <h2 class="text-xl font-semibold text-slate-900">Hello Rigo</h2>
-          <p id="app" class="mt-2 text-sm text-slate-600"></p>
+      <main id="top" class="main-content">
+        <section class="show-header" aria-labelledby="page-title">
+          <div>
+            <p class="eyebrow">TONIGHT <span>·</span> 7:30 PM <span>·</span> HALL 02</p>
+            <h1 id="page-title">The Grand <em>Reopening</em></h1>
+          </div>
+          <div class="show-tag">STANDARD SCREENING</div>
+        </section>
+
+        <div class="booking-layout">
+          <section class="theater" aria-labelledby="seat-map-title">
+            <div class="theater-heading">
+              <div>
+                <p class="eyebrow">YOUR VIEWING ROOM</p>
+                <h2 id="seat-map-title">Choose your seats</h2>
+              </div>
+              <div class="seat-legend" aria-label="Seat status legend">
+                <span><i class="legend-seat available-key"></i> Available</span>
+                <span><i class="legend-seat occupied-key"></i> Reserved</span>
+                <span><i class="legend-seat selected-key"></i> Selected</span>
+              </div>
+            </div>
+
+            <div class="screen-area" aria-hidden="true">
+              <div class="screen-glow"></div>
+              <div class="screen-shape"></div>
+              <span>SCREEN</span>
+            </div>
+
+            <div id="seat-grid" class="seat-grid" role="group" aria-label="Cinema seat map"></div>
+            <div class="theater-footer">
+              <span>FRONT ROW <span class="footer-dash">—</span> BACK ROW</span>
+              <span>80 SEATS</span>
+            </div>
+          </section>
+
+          <aside class="booking-panel" aria-labelledby="booking-title">
+            <div class="panel-heading">
+              <p class="eyebrow">RESERVATION</p>
+              <h2 id="booking-title">Your seats</h2>
+            </div>
+
+            <div class="seat-summary">
+              <span class="summary-label">SELECTED</span>
+              <strong id="selected-summary">None</strong>
+            </div>
+
+            <button id="reserve-button" class="button button-primary" type="button" disabled>
+              Reserve selected seats
+            </button>
+            <button id="find-pair-button" class="button button-secondary" type="button">
+              Find adjacent pair <span aria-hidden="true">↗</span>
+            </button>
+
+            <p id="status-message" class="status-message" role="status" aria-live="polite">Ready for reservations.</p>
+
+            <div class="occupancy" aria-label="Seat availability">
+              <div class="occupancy-item">
+                <span class="occupancy-number" id="available-count">80</span>
+                <span class="occupancy-label">AVAILABLE</span>
+              </div>
+              <div class="occupancy-divider"></div>
+              <div class="occupancy-item">
+                <span class="occupancy-number" id="occupied-count">0</span>
+                <span class="occupancy-label">RESERVED</span>
+              </div>
+            </div>
+
+            <button id="reset-button" class="reset-button" type="button">
+              <span aria-hidden="true">↺</span> Reset cinema
+            </button>
+          </aside>
         </div>
-      </section>
-    </main>
+      </main>
+
+      <footer class="page-footer">
+        <span>SEAT BY SEAT <span class="footer-dash">/</span> CINEMA RESERVATIONS</span>
+        <span>ROW 01—08 <span class="footer-dash">·</span> SEAT 01—10</span>
+      </footer>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
